@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CQRS.ES.ItemListDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>GUID</td>
+        <td>Version</td>
+        <td>Name</td>
+        
+        <td>Action</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.version
+            </td>
+            <td>
+                @item.name
+            </td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.id, OriginalVersion=item.version })</td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+@Html.ActionLink("Add item", "Add");
+
+
+
+
